@@ -10,7 +10,7 @@ const URL_ALL_CHARS = "https://rickandmortyapi.com/api/character";
  * @param {*} setIsLoading  to know if the request is done
  * @param {*} setHasError to know whether we have any problems
  */
-const fetchChars = async (url = null, setCharacters, setCharactersInfo, setIsLoading, setHasError) => {
+const fetchChars = async (url = null, { setCharacters, setCharactersInfo, setIsLoading, setHasError }) => {
     if (!url)
         url = URL_ALL_CHARS;
 
@@ -38,25 +38,4 @@ const fetchChars = async (url = null, setCharacters, setCharactersInfo, setIsLoa
 
 }
 
-/**
- * Using the prev value from the response info for fetching data if it has 
- * 
- * @param {*} context Static context for setting up data to show
- */
-const onPrevious = (context) => {
-    fetchChars(context.info.prev, context.setCharacters,
-        context.setCharactersInfo, context.setIsLoading,
-        context.setHasError)
-}
-/**
- * Using the next value from the response info for fetching data if it has 
- * 
- * @param {*} context Static context for setting up data to show
- */
-const onNext = (context) => {
-    fetchChars(context.info.next, context.setCharacters,
-        context.setCharactersInfo, context.setIsLoading,
-        context.setHasError)
-}
-
-export { fetchChars, onPrevious, onNext };
+export { fetchChars };

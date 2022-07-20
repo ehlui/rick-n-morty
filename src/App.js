@@ -14,7 +14,7 @@ function App() {
 
 
   useEffect(() => {
-    fetchChars(null, setCharacters, setCharactersInfo, setIsLoading, setHasError)
+    fetchChars(null, { setCharacters, setCharactersInfo, setIsLoading, setHasError })
   }, [setCharacters, setCharactersInfo]);
 
   return (
