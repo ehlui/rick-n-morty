@@ -1,11 +1,17 @@
 import React, { useContext } from 'react'
 import StaticContext from '../context/StaticContext'
-import { onPrevious, onNext } from '../functions/characterUtils'
+import { fetchChars } from '../functions/characterUtils'
 
 export default function Pagination() {
   const context = useContext(StaticContext)
-  const handleOnPrevious = () => { onPrevious(context) }
-  const handleOnNext = () => { onNext(context) }
+  const contextStatesSetters = {
+    setCharacters: context.setCharacters,
+    setCharactersInfo: context.setCharactersInfo,
+    setIsLoading: context.setIsLoading,
+    setHasError: context.setHasError
+  }
+  const handleOnPrevious = () => { fetchChars(context.info.prev, contextStatesSetters) }
+  const handleOnNext = () => { fetchChars(context.info.next, contextStatesSetters) }
 
   return (
     <nav aria-label="Page navigation">
