@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import StaticContext from '../context/StaticContext'
 
-
 export default function Characters() {
   const context = useContext(StaticContext)
   return (
