@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
+import StaticContext from '../context/StaticContext'
 
-export default function Characters({ characters = [] }) {
+
+export default function Characters() {
+  const context = useContext(StaticContext)
   return (
     <div className='row'>
-      {characters.map((char, index) => (
+      {context.characters.map((char, index) => (
         <div key={`${char.name}-${index}}`} className='col'>
           <div className='card'>
-            <img src={char.image} alt={char.name}/>
+            <img src={char.image} alt={char.name} />
           </div>
         </div>
       ))}
