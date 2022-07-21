@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import StaticContext from './context/StaticContext';
 import Characters from './components/Characters';
 import Pagination from './components/Pagination';
+import Navbar from './components/Navbar';
 import { fetchChars } from './functions/characterUtils'
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       hasError: hasError,
       setHasError: setHasError
     }}>
+      <Navbar />
       <div className='container'>
         {isLoading && <h3>Loading ...</h3>}
         {!isLoading &&
