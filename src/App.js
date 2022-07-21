@@ -12,14 +12,23 @@ function App() {
   const [hasError, setHasError] = useState(false);
   const [characters, setCharacters] = useState([])
   const [charactersInfo, setCharactersInfo] = useState({})
-
+  const [currentUrl, setCurrentUrl] = useState(null);
 
   useEffect(() => {
-    fetchChars(null, { setCharacters, setCharactersInfo, setIsLoading, setHasError })
+    const contextSetters = {
+      setCharacters,
+      setCharactersInfo,
+      setIsLoading,
+      setHasError,
+      setCurrentUrl
+    }
+    fetchChars(null, contextSetters)
   }, [setCharacters, setCharactersInfo]);
 
   return (
     <StaticContext.Provider value={{
+      currentUrl: currentUrl,
+      setCurrentUrl: setCurrentUrl,
       characters: characters,
       setCharacters: setCharacters,
       info: charactersInfo,
