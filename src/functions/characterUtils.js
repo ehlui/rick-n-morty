@@ -1,4 +1,4 @@
-const URL_ALL_CHARS = "https://rickandmortyapi.com/api/character";
+const BASE_URL_ALL_CHARS = "https://rickandmortyapi.com/api/character";
 
 /**
  * Method to consume an api and update our states for each call.
@@ -10,9 +10,9 @@ const URL_ALL_CHARS = "https://rickandmortyapi.com/api/character";
  * @param {*} setIsLoading  to know if the request is done
  * @param {*} setHasError to know whether we have any problems
  */
-const fetchChars = async (url = null, { setCharacters, setCharactersInfo, setIsLoading, setHasError }) => {
+const fetchChars = async (url = null, { setCharacters, setCharactersInfo, setIsLoading, setHasError, setCurrentUrl }) => {
     if (!url)
-        url = URL_ALL_CHARS;
+        url = BASE_URL_ALL_CHARS;
 
     setIsLoading(true);
     setHasError(false);
@@ -35,7 +35,8 @@ const fetchChars = async (url = null, { setCharacters, setCharactersInfo, setIsL
     };
 
     fetchData();
+    setCurrentUrl(url)
 
 }
 
-export { fetchChars };
+export { fetchChars, BASE_URL_ALL_CHARS };
